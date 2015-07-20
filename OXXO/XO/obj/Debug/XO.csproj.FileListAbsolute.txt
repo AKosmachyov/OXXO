@@ -1,0 +1,6 @@
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\bin\Debug\XO.exe.config
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\obj\Debug\XO.csprojResolveAssemblyReference.cache
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\bin\Debug\XO.exe
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\bin\Debug\XO.pdb
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\obj\Debug\XO.exe
+c:\users\alexander\documents\visual studio 2013\Projects\XO\XO\obj\Debug\XO.pdb
