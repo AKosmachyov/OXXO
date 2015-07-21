@@ -8,7 +8,7 @@ namespace OXXO
             int[,] pole = new int[3, 3];
             for (int k = 0; k < 9; k++)
             {
-                string bbod = Console.ReadLine();   
+                string bbod = Console.ReadLine();
                 int[] k1 = new int[2]
                 {
                     Convert.ToInt16(bbod[0].ToString()),
@@ -20,6 +20,11 @@ namespace OXXO
                     if (proverka(pole,1) == 1)
                     {Console.WriteLine("WIN-1");
                     break;
+                    }
+                    if (k==8 && proverka(pole,1)==0)
+                    {
+                        Console.WriteLine("Ничья");
+                        break;
                     }
                 }
                 else
@@ -43,18 +48,17 @@ namespace OXXO
 
         }
         static public int proverka(int[,] pole2,int ab)
-        {
-            int n=ab;
+        {            
             for (int i = 0; i < 3;i++ )
             {                
-                    if (pole2[i, 0] == n && pole2[i, 1] == n && pole2[i, 2] ==n )
-                        return n;
-                    if (pole2[0, i] == n && pole2[1, i] == n && pole2[2, i] == n)
-                        return n;
-                    if (pole2[0,0]==n && pole2[1,1]==n && pole2[2,2]==n )
-                        return n;
-                    if (pole2[0,2]==n && pole2[1,1]==n && pole2[2,0]==n  )
-                        return n;
+                    if (pole2[i, 0] == ab && pole2[i, 1] == ab && pole2[i, 2] ==ab )
+                        return ab;
+                    if (pole2[0, i] == ab && pole2[1, i] == ab && pole2[2, i] == ab)
+                        return ab;
+                    if (pole2[0,0]==ab && pole2[1,1]==ab && pole2[2,2]==ab )
+                        return ab;
+                    if (pole2[0,2]==ab && pole2[1,1]==ab && pole2[2,0]==ab  )
+                        return ab;
             }
                 return 0;
         }
