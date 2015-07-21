@@ -34,7 +34,7 @@ namespace OXXO
                 for (int i = 0; i < 3; i++)             //    
                 {
                     Console.WriteLine();
-                    for (int g = 0; g < 3; g++)             //Вывод таблицы в консоль test comment
+                    for (int g = 0; g < 3; g++)             //Вывод таблицы
                         Console.Write(pole[i, g]);
                 }                                       //
                 Console.WriteLine();
