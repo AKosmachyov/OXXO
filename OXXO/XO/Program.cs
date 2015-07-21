@@ -8,7 +8,7 @@ namespace OXXO
             int[,] pole = new int[3, 3];
             for (int k = 0; k < 9; k++)
             {
-                string bbod = Console.ReadLine();   
+                string bbod = Console.ReadLine();   //Ввод
                 int[] k1 = new int[2]
                 {
                     Convert.ToInt16(bbod[0].ToString()),
