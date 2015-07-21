@@ -7,8 +7,8 @@ namespace OXXO
         {
             int[,] pole = new int[3, 3];
             for (int k = 0; k < 9; k++)
-            {
-                string bbod = Console.ReadLine();   //Ввод
+            {                
+                string bbod = Console.ReadLine();  
                 int[] k1 = new int[2]
                 {
                     Convert.ToInt16(bbod[0].ToString()),
@@ -20,6 +20,11 @@ namespace OXXO
                     if (proverka(pole,1) == 1)
                     {Console.WriteLine("WIN-1");
                     break;
+                    }
+                    if (k==8 && proverka(pole,1)==0)
+                    {
+                        Console.WriteLine("Ничья");
+                        break;
                     }
                 }
                 else
