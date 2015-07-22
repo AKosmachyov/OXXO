@@ -3,10 +3,13 @@ namespace OXXO
 {
     class Program
     {
+        public static int k ;        
         static void Main(string[] args)
         {
+            
             int[,] pole = new int[3, 3];
-            for (int k = 0; k < 9; k++)
+            int movePlayer = 0;
+            for (k = 0; k < 9; k++)
             {
                 string bbod = Console.ReadLine();
                 int[] k1 = new int[2]
@@ -14,32 +17,26 @@ namespace OXXO
                     Convert.ToInt16(bbod[0].ToString()),
                     Convert.ToInt16(bbod[2].ToString())
                 };
+
                 if (k % 2 == 0)
+                    movePlayer = 1;
+                else
+                    movePlayer = 2;
+
+                pole[k1[0], k1[1]] = movePlayer;
+                write(pole);
+                switch (proverka(pole, movePlayer))
                 {
-                    pole[k1[0], k1[1]] = 1;
-                    write(pole);
-                    if (proverka(pole,1) == 1)
-                    {                        
+                    case 1:
                         Console.WriteLine("WIN-1");
                         break;
-                    }
-                    if (k==8 && proverka(pole,1)==0)
-                    {
-                        Console.WriteLine("Ничья");
-                        break;
-                    }
-                }
-                else
-                {
-                    pole[k1[0], k1[1]] = 2; 
-                    write(pole);
-                    if (proverka(pole, 2) == 2)
-                    {
+                    case 2:
                         Console.WriteLine("WIN-2");
                         break;
-                    }
+                    case 3:
+                        Console.WriteLine("Ничья");
+                        break;
                 }
-                Console.WriteLine();
             }
             Console.ReadLine();
         }
@@ -54,9 +51,13 @@ namespace OXXO
                     if (pole2[0,0]==ab && pole2[1,1]==ab && pole2[2,2]==ab )
                         return ab;
                     if (pole2[0,2]==ab && pole2[1,1]==ab && pole2[2,0]==ab  )
-                        return ab;
+                        return ab;                   
             }
-                return 0;  
+            if (k == 8)
+             {
+                 return 3;
+             }
+            return 0;  
         }
 
         static public void clean(int [,]pole2 )
@@ -74,6 +75,7 @@ namespace OXXO
                 }
                 Console.WriteLine();
             }
-        }
+            Console.WriteLine();
+        }      
     }
 }
