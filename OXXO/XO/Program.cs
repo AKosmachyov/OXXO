@@ -3,7 +3,7 @@ namespace OXXO
 {
     class Program
     {
-        public static int k ;        
+        public static int k;        
         static void Main(string[] args)
         {
             gameProgress();
@@ -16,8 +16,8 @@ namespace OXXO
         }
         static public void gameProgress()
         {
-            int[,] pole = new int[3, 3];
-            clean(pole);
+            var pole = new int[3, 3];
+            cleanPole(pole);
             int movePlayer = 0;
             for (k = 0; k < 9; k++)
             {
@@ -27,15 +27,14 @@ namespace OXXO
                     Convert.ToInt16(bbod[0].ToString()),
                     Convert.ToInt16(bbod[2].ToString())
                 };
-
                 if (k % 2 == 0)
                     movePlayer = 1;
                 else
                     movePlayer = 2;
 
                 pole[k1[0], k1[1]] = movePlayer;
-                write(pole);
-                switch (proverka(pole, movePlayer))
+                showPole(pole);
+                switch (proverkaWin(pole, movePlayer))
                 {
                     case 1:
                         Console.WriteLine("WIN-1");
@@ -49,32 +48,30 @@ namespace OXXO
                 }
             }
         }
-        static public int proverka(int[,] pole2,int ab)
+        static public int proverkaWin(int[,] pole2,int numberPlayer)
         {            
             for (int i = 0; i < 3;i++ )
-            {                
-                    if (pole2[i, 0] == ab && pole2[i, 1] == ab && pole2[i, 2] ==ab )
-                      return ab;
-                    if (pole2[0, i] == ab && pole2[1, i] == ab && pole2[2, i] == ab)
-                        return ab;
-                    if (pole2[0,0]==ab && pole2[1,1]==ab && pole2[2,2]==ab )
-                        return ab;
-                    if (pole2[0,2]==ab && pole2[1,1]==ab && pole2[2,0]==ab  )
-                        return ab;                   
+            {
+                if (pole2[i, 0] == numberPlayer && pole2[i, 1] == numberPlayer && pole2[i, 2] ==numberPlayer )
+                    return numberPlayer;
+                if (pole2[0, i] == numberPlayer && pole2[1, i] == numberPlayer && pole2[2, i] == numberPlayer)
+                    return numberPlayer;
+                if (pole2[0,0]==numberPlayer && pole2[1,1]==numberPlayer && pole2[2,2]==numberPlayer)
+                    return numberPlayer;
+                if (pole2[0,2]==numberPlayer && pole2[1,1]==numberPlayer && pole2[2,0]==numberPlayer)
+                    return numberPlayer;
             }
             if (k == 8)
-             {
-                 return 3;
-             }
+            {
+                return 3;
+            }
             return 0;  
         }
-
-        static public void clean(int [,]pole2 )
+        static public void cleanPole(int [,]pole2 )
         {    
-          Array.Clear(pole2, 0, pole2.Length);  
+            Array.Clear(pole2, 0, pole2.Length);
         }
-
-        static public void write (int [,] pole2)
+        static public void showPole (int [,] pole2)
         {
             for (int i=0;i<3;i++)
             {
@@ -85,6 +82,6 @@ namespace OXXO
                 Console.WriteLine();
             }
             Console.WriteLine();
-        }      
+        }
     }
 }
