@@ -6,8 +6,18 @@ namespace OXXO
         public static int k ;        
         static void Main(string[] args)
         {
-            
+            gameProgress();
+            while (Console.ReadLine()!="0")
+            {
+                Console.WriteLine("Началось");
+                gameProgress();
+                Console.WriteLine("Хочешь сыграть в игру?");
+            }
+        }
+        static public void gameProgress()
+        {
             int[,] pole = new int[3, 3];
+            clean(pole);
             int movePlayer = 0;
             for (k = 0; k < 9; k++)
             {
@@ -29,16 +39,15 @@ namespace OXXO
                 {
                     case 1:
                         Console.WriteLine("WIN-1");
-                        break;
+                        return;
                     case 2:
                         Console.WriteLine("WIN-2");
-                        break;
+                        return;
                     case 3:
                         Console.WriteLine("Ничья");
-                        break;
+                        return;
                 }
             }
-            Console.ReadLine();
         }
         static public int proverka(int[,] pole2,int ab)
         {            
