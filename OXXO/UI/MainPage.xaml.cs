@@ -81,15 +81,14 @@ namespace UI
                 {
                     item.Source = null;
                 }
-
             }
         }
          void Image_Click(object sender, TappedRoutedEventArgs e)
          {
-             Image item = sender as Image;
+             Image item = sender as Image;//TODO передача в core в массив координат
              item.Opacity = 1;
              item.Source = new BitmapImage(new Uri(item.BaseUri, "/Resource/unnamed.png")) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-
+             Core.gameProgress(item.Tag;
          }
     }
 }
