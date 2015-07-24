@@ -10,14 +10,12 @@ namespace UI
 		}
 		private int whoIsNow;
 		private int[,] gameField;
-		private void startGame(){
-
-		}
+		
 		private goMove(int x, int y){
-
+			//осуществляет ход - заполняет массим 1 или 2 в зависимотсти о того, кто ходит
 		}
 		private int checkGameStatus(){
-
+			//проверяет статус игры 0-игра в процессе 1-выиграли крестики 2-выиграли нолики 3-ничья
 		}
 	}
 }
