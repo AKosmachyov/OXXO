@@ -19,5 +19,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button Content="Reset" Grid.Column="1" HorizontalAlignment="Left" Height="53" Margin="10.667,-224,0,0" VerticalAlignment="Top" Width="132" Click="Button_Click"/>
     </Grid>
 </Page>

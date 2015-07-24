@@ -79,7 +79,7 @@ namespace UI
                 Image item= newGrid.Children[i] as Image;
                 if (item!=null)
                 {
-                    item.Source = null;
+                    item.Opacity =0;
                 }
             }
         }
@@ -87,8 +87,14 @@ namespace UI
          {
              Image item = sender as Image;//TODO передача в core в массив координат
              item.Opacity = 1;
-             item.Source = new BitmapImage(new Uri(item.BaseUri, "/Resource/unnamed.png")) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-             Core.gameProgress(item.Tag;
+             item.Source = new BitmapImage(new Uri(item.BaseUri, Core.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+             Core.gameProgress(item.Tag.ToString());
+         }
+
+         private void Button_Click(object sender, RoutedEventArgs e)
+         {
+             Core.cleanPole();
+             cleanUI();
          }
     }
 }

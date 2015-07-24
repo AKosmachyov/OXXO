@@ -1,24 +1,44 @@
 ﻿using System;
+using Windows.UI.Popups;
 namespace UI
 {
     class Core
         {
-            public static int k;
+            static int[,] pole = new int[3, 3];
+            static int movePlayer = 1;
             //static void gameCore()
             //{
             //    gameProgress();                
             //}
             static public void gameProgress(string tag)
-            {
-                var pole = new int[3, 3];
-                cleanPole(pole);
-                int movePlayer = 1;                
+            {                
+                //cleanPole(pole);                               
                 int[] k1 = new int[2]
                 {
                     Convert.ToInt16(tag[0].ToString()),
                     Convert.ToInt16(tag[2].ToString())
                 };
                 pole[k1[0], k1[1]] = movePlayer;
+                proverkaWin(pole, movePlayer);
+                 switch (proverkaWin(pole, movePlayer))
+                 {
+                     case 1:
+                         var messageDialog1 = new MessageDialog("Win-1");
+                         messageDialog1.ShowAsync();
+                         return;
+                     case 2:
+                         var messageDialog2 = new MessageDialog("Win-2");
+                         messageDialog2.ShowAsync();
+                         return;                         
+                     case 3:
+                         var messageDialog3 = new MessageDialog("Ничья");
+                         messageDialog3.ShowAsync();
+                         return; 
+                 }
+                 if (movePlayer == 1)
+                     movePlayer++;
+                 else
+                     movePlayer--;
                 //    if (k % 2 == 0)
                 //        movePlayer = 1;
                 //    else
@@ -52,16 +72,23 @@ namespace UI
                     if (pole2[0, 2] == numberPlayer && pole2[1, 1] == numberPlayer && pole2[2, 0] == numberPlayer)
                         return numberPlayer;
                 }
-                if (k == 8)
-                {
-                    return 3;
-                }
+                
                 return 0;
             }
-            static public void cleanPole(int[,] pole2)  // отчиска массива
+        static public void cleanPole()  // отчиска массива
             {
-                Array.Clear(pole2, 0, pole2.Length);
+                Array.Clear(pole, 0, pole.Length);
             }
+        static public string uri()
+        {
+            if (movePlayer == 1)
+            {
+                return "/Resource/firefox.png";
+            }
+            else
+                return "/Resource/unnamed.png";
+            return "a";
+        }
     }
 }
 
