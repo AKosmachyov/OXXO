@@ -64,15 +64,17 @@ namespace UI
                 //проверяет статус игры 0-игра в процессе 1-выиграли крестики 2-выиграли нолики 3-ничья
             return 0;
         }
-        public string uri()
-        {
+       public string uri() //я бы переименовал в getUri() потому что этот метод возвращает значение
+        {                   //сделай динамическое формирование строки например: у темя есть переменная pathToIng = "/Resource/";
             if (whoIsNow == 1)
             {
-                return "/Resource/firefox.png";
-            }
+                return "/Resource/firefox.png"; //а тут бы добавлял к pathToIng название изображения а в будущем папку с сетом картинок и картинку
+            }  //да, кстати переименну картинки в x.png, y.png
             else
-                return "/Resource/unnamed.png";            
+                return "/Resource/unnamed.png";
+            return "a"; //и return сделай null в этой строке потомучто string это ссылочный тип 
         }
+        
         public int getWhoIsNow()
         {
             return whoIsNow;
