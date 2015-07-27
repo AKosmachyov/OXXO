@@ -2,7 +2,7 @@
 using System.Windows;
 namespace UI
 {
-    public struct Point
+    public struct Point // а это бы бы здорово вынести в отдельный файл
     {
         public int X;
         public int Y;
