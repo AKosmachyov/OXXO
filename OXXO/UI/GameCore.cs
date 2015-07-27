@@ -26,7 +26,7 @@ namespace UI
                 whoIsNow++;
             else
                 whoIsNow--;
-            //осуществляет ход - заполняет массим 1 или 2 в зависимотсти о того, кто ходит+
+            //осуществляет ход - заполняет массим 1 или 2 в зависимотсти о того, кто ходит
             return returnValue;
         }
         private int checkGameStatus()
