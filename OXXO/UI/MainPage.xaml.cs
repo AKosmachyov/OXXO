@@ -88,33 +88,26 @@ namespace UI
         }
          void Image_Click(object sender, TappedRoutedEventArgs e)
          {
-
-
-
-             Image item = sender as Image;//TODO передача в core в массив координат
-             item.Opacity = 1;
-             item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+             Image item = sender as Image;
              switch (abydabi.goMove(item.Tag.ToString()))
              {
                  case 1:
                      var messageDialog1 = new MessageDialog("Win-1");
                      messageDialog1.ShowAsync();
-                     return;
+                     break;
                  case 2:
                      var messageDialog2 = new MessageDialog("Win-2");
                      messageDialog2.ShowAsync();
-                     return;
+                     break;
                  case 3:
                      var messageDialog3 = new MessageDialog("Ничья");
                      messageDialog3.ShowAsync();
+                     break;
+                 case -1:
                      return;
-             }
-         }
-
-         private void Button_Click(object sender, RoutedEventArgs e)
-         {
-             Core.cleanPole();
-             cleanUI();
-         }
+             }             
+             item.Opacity = 1;
+             item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+         }       
     }
 }
