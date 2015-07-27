@@ -6,13 +6,9 @@ namespace UI
         {
             static int[,] pole = new int[3, 3];
             static int movePlayer = 1;
-            //static void gameCore()
-            //{
-            //    gameProgress();                
-            //}
+            
             static public void gameProgress(string tag)
-            {                
-                //cleanPole(pole);                               
+            {
                 int[] k1 = new int[2]
                 {
                     Convert.ToInt16(tag[0].ToString()),
@@ -33,52 +29,32 @@ namespace UI
                      case 3:
                          var messageDialog3 = new MessageDialog("Ничья");
                          messageDialog3.ShowAsync();
-                         return; 
+                         return;
                  }
-                 if (movePlayer == 1)
-                     movePlayer++;
-                 else
-                     movePlayer--;
-                //    if (k % 2 == 0)
-                //        movePlayer = 1;
-                //    else
-                //        movePlayer = 2;
-
-                //    pole[k1[0], k1[1]] = movePlayer;                    
-                //    switch (proverkaWin(pole, movePlayer))
-                //    {
-                //        case 1:
-                //            Console.WriteLine("WIN-1");
-                //            return;
-                //        case 2:
-                //            Console.WriteLine("WIN-2");
-                //            return;
-                //        case 3:
-                //            Console.WriteLine("Ничья");
-                //            return;
-                //    }
-                //}
+                if (movePlayer == 1)
+                    movePlayer++;
+                else
+                    movePlayer--;
             }
-            static public int proverkaWin(int[,] pole2, int numberPlayer) //проверяет массив на выйгрыш
+        static public int proverkaWin(int[,] pole2, int numberPlayer)
+        {
+            for (int i = 0; i < 3; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (pole2[i, 0] == numberPlayer && pole2[i, 1] == numberPlayer && pole2[i, 2] == numberPlayer)
-                        return numberPlayer;
-                    if (pole2[0, i] == numberPlayer && pole2[1, i] == numberPlayer && pole2[2, i] == numberPlayer)
-                        return numberPlayer;
-                    if (pole2[0, 0] == numberPlayer && pole2[1, 1] == numberPlayer && pole2[2, 2] == numberPlayer)
-                        return numberPlayer;
-                    if (pole2[0, 2] == numberPlayer && pole2[1, 1] == numberPlayer && pole2[2, 0] == numberPlayer)
-                        return numberPlayer;
-                }
-                
+                if (pole2[i, 0] == numberPlayer && pole2[i, 1] == numberPlayer && pole2[i, 2] == numberPlayer)
+                    return numberPlayer;
+                if (pole2[0, i] == numberPlayer && pole2[1, i] == numberPlayer && pole2[2, i] == numberPlayer)
+                    return numberPlayer;
+                if (pole2[0, 0] == numberPlayer && pole2[1, 1] == numberPlayer && pole2[2, 2] == numberPlayer)
+                    return numberPlayer;
+                if (pole2[0, 2] == numberPlayer && pole2[1, 1] == numberPlayer && pole2[2, 0] == numberPlayer)
+                    return numberPlayer;
+            }                
                 return 0;
-            }
-        static public void cleanPole()  // отчиска массива
-            {
-                Array.Clear(pole, 0, pole.Length);
-            }
+        }
+        static public void cleanPole()
+        {
+            Array.Clear(pole, 0, pole.Length);
+        }
         static public string uri()
         {
             if (movePlayer == 1)

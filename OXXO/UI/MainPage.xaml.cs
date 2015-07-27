@@ -24,9 +24,11 @@ namespace UI
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Game abydabi;
         public MainPage()
         {
             this.InitializeComponent();
+            abydabi= new Game();
             creatUI();
             
 
@@ -68,6 +70,7 @@ namespace UI
 
                     Grid.SetRow(imgForPast, i);
                     Grid.SetColumn(imgForPast, g);
+                   
                 }
             }
         }
@@ -85,10 +88,27 @@ namespace UI
         }
          void Image_Click(object sender, TappedRoutedEventArgs e)
          {
+
+
+
              Image item = sender as Image;//TODO передача в core в массив координат
              item.Opacity = 1;
-             item.Source = new BitmapImage(new Uri(item.BaseUri, Core.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-             Core.gameProgress(item.Tag.ToString());
+             item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+             switch (abydabi.goMove(item.Tag.ToString()))
+             {
+                 case 1:
+                     var messageDialog1 = new MessageDialog("Win-1");
+                     messageDialog1.ShowAsync();
+                     return;
+                 case 2:
+                     var messageDialog2 = new MessageDialog("Win-2");
+                     messageDialog2.ShowAsync();
+                     return;
+                 case 3:
+                     var messageDialog3 = new MessageDialog("Ничья");
+                     messageDialog3.ShowAsync();
+                     return;
+             }
          }
 
          private void Button_Click(object sender, RoutedEventArgs e)
