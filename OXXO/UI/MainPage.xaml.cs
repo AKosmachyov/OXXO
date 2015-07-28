@@ -27,9 +27,10 @@ namespace UI
         Game abydabi;
         public MainPage()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();            
             abydabi= new Game();
             creatUI();
+            changePlayerImage();
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -85,6 +86,8 @@ namespace UI
          void Image_Click(object sender, TappedRoutedEventArgs e)
          {
              Image item = sender as Image;
+             if (abydabi.checkGameStatus() > 0)
+                 return;
              switch (abydabi.goMove(item.Tag.ToString()))
              {
                  case 1:
@@ -101,7 +104,8 @@ namespace UI
                      break;
                  case -1:
                      return;
-             }             
+             }
+             changePlayerImage();
              item.Opacity = 1;
              item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
              
@@ -110,9 +114,22 @@ namespace UI
          private void Button_Click(object sender, RoutedEventArgs e)
          {
              cleanUI();
-             abydabi=new Game();             
+             abydabi=new Game();
+             changePlayerImage();
          }
-        
+        private void changePlayerImage()
+         {
+             if (abydabi.getWhoIsNow() == 1)
+             {
+                 Player1.Width = 60;
+                 Player2.Width = 45;
+             }
+             else
+             {
+                 Player2.Width = 60;
+                 Player1.Width = 45;
+             }
+         }
 
     }
 }
