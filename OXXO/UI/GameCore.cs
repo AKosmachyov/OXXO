@@ -9,7 +9,6 @@ namespace UI
     }
     class Game
     {
-
         public Game()
         {
             Random rnd = new Random();
@@ -68,10 +67,10 @@ namespace UI
         {
             if (whoIsNow == 1)
             {
-                return "/Resource/firefox.png";
+                return "/Resource/X.png";
             }
             else
-                return "/Resource/unnamed.png";            
+                return "/Resource/O.png";            
         }
         public int getWhoIsNow()
         {
@@ -87,4 +86,6 @@ namespace UI
 //TODO Ничья+
 //TODO Cчетчик+
 //TODO Reset во время  игры и начать заново
-//TODO Проверка хода 
+//TODO Проверка хода +
+//TODO время на игру
+//TODO Сделать поле

@@ -30,9 +30,6 @@ namespace UI
             this.InitializeComponent();
             abydabi= new Game();
             creatUI();
-            
-
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -57,8 +54,7 @@ namespace UI
             for (int i=0;i<3;i++)
             {
                 for(int g=0;g<3;g++)
-                {
-                    
+                {                    
                     //Добавим элемент Image в первую строку элемента newGrid.
                     Image imgForPast = new Image();
                     imgForPast.Tag=i+" "+g;
@@ -66,13 +62,13 @@ namespace UI
                     newGrid.Children.Add(imgForPast);
                     imgForPast.Opacity = 0;
                     //Создадим экземпляр класса BitmapImage, пропишем ему путь к ресурсу с картинкой, и установим режим создания BitmapImage.
-                    imgForPast.Source = new BitmapImage(new Uri(imgForPast.BaseUri, "/Resource/unnamed.png")) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-
+                    imgForPast.Source = new BitmapImage(new Uri(imgForPast.BaseUri, "/Resource/X.png")) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+                    
                     Grid.SetRow(imgForPast, i);
                     Grid.SetColumn(imgForPast, g);
                    
                 }
-            }
+            }            
         }
 
          private void cleanUI()
@@ -108,6 +104,15 @@ namespace UI
              }             
              item.Opacity = 1;
              item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-         }       
+             
+         }
+
+         private void Button_Click(object sender, RoutedEventArgs e)
+         {
+             cleanUI();
+             abydabi=new Game();             
+         }
+        
+
     }
 }
