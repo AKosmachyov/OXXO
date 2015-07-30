@@ -107,7 +107,7 @@ namespace UI
              }
              changePlayerImage();
              item.Opacity = 1;
-             item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.uri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+             item.Source = new BitmapImage(new Uri(item.BaseUri, abydabi.getUri())) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
              
          }
 
@@ -131,5 +131,12 @@ namespace UI
              }
          }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            cleanUI();
+            abydabi = new Game(abydabi.getWhoIsNow());
+            changePlayerImage();
+        }
+       
     }
 }

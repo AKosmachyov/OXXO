@@ -63,7 +63,6 @@ namespace UI
             }
             else
                 return "/Resource/unnamed.png";
-            return "a";
         }
     }
 }
