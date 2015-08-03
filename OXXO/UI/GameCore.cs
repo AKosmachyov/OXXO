@@ -1,34 +1,33 @@
 ﻿using System;
 using System.Windows;
 namespace UI
-{
-    public struct Point
-    {
-        public int X;
-        public int Y;
-    }
+{   
     class Game
     {
         public Game()
         {
             Random rnd = new Random();
             whoIsNow = (rnd.Next() % 2) + 1;
+            firstMove = whoIsNow;
             gameField = new int[3, 3];
         }
         public Game(int nowPlayed)
         {
             whoIsNow = nowPlayed;
+            changePlayerMove();
+            firstMove = whoIsNow;
             gameField = new int[3, 3];
         }
 
         private int whoIsNow;
         private int[,] gameField;
         private int numberMoves = 0;
+        private int firstMove;
 
         public int goMove(string tag)
         {
 
-            var koordinata = new Point() { X = Convert.ToInt16(tag[0].ToString()), Y = Convert.ToInt16(tag[2].ToString()) };
+            var koordinata = new CreatPoint.Point() { X = Convert.ToInt16(tag[0].ToString()), Y = Convert.ToInt16(tag[2].ToString()) };
             int returnValue = -1;
             if (possibleMove(koordinata))
             {
@@ -37,7 +36,7 @@ namespace UI
                 numberMoves++;
                 if (numberMoves > 4)
                     returnValue = checkGameStatus();
-                changePlayerXod();
+                changePlayerMove();
             }
             return returnValue;
             //осуществляет ход - заполняет массим 1 или 2 в зависимотсти о того, кто ходит
@@ -73,17 +72,21 @@ namespace UI
         {
             return whoIsNow;
         }
-        private bool possibleMove(Point point)
+        private bool possibleMove(CreatPoint.Point point)
         {
             return gameField[point.X, point.Y] == 0;
         }
-        private int changePlayerXod()
+        private int changePlayerMove()
         {
             if (whoIsNow == 1)
                 whoIsNow++;
             else
                 whoIsNow--;
             return whoIsNow;
+        }
+        public int getFirstMove()
+        {
+            return firstMove;
         }
     }
 }

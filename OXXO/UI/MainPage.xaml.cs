@@ -132,9 +132,9 @@ namespace UI
          }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        {            
             cleanUI();
-            abydabi = new Game(abydabi.getWhoIsNow());
+            abydabi = new Game(abydabi.getFirstMove());
             changePlayerImage();
         }
        
